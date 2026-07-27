@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1783496955674,
+      "tag": "0000_blue_shatterstar",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1785083000000,
+      "tag": "0001_ingredient_step_counts",
+      "breakpoints": true
+    }
+  ]
+}
