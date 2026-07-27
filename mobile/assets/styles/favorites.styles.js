@@ -1,0 +1,62 @@
+import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants/colors";
+
+export const favoritesStyles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: COLORS.background },
+  listContent: { flexGrow: 1, paddingHorizontal: 16, paddingBottom: 32 },
+  headerFlush: { paddingHorizontal: 4, paddingTop: 16, paddingBottom: 2 },
+  syncNotice: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginHorizontal: 4,
+    marginTop: 12,
+    padding: 12,
+    borderRadius: 14,
+    backgroundColor: COLORS.infoSoft,
+  },
+  syncNoticeText: { flex: 1, marginLeft: 8, color: COLORS.textLight, fontSize: 12, lineHeight: 17 },
+  sectionHeader: {
+    marginHorizontal: 4,
+    marginTop: 18,
+    marginBottom: 13,
+    paddingTop: 14,
+    borderTopWidth: 1,
+    borderTopColor: COLORS.border,
+  },
+  sectionTitle: { color: COLORS.text, fontSize: 18, fontWeight: "800" },
+  row: { justifyContent: "space-between" },
+  emptyState: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 30,
+    paddingVertical: 60,
+  },
+  emptyIconContainer: {
+    width: 80,
+    height: 80,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 16,
+    borderRadius: 27,
+    backgroundColor: COLORS.primarySoft,
+  },
+  emptyTitle: { color: COLORS.text, fontSize: 21, fontWeight: "800", textAlign: "center" },
+  emptyDescription: {
+    marginTop: 8,
+    color: COLORS.textLight,
+    fontSize: 14,
+    lineHeight: 20,
+    textAlign: "center",
+  },
+  exploreButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 22,
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 15,
+    backgroundColor: COLORS.primary,
+  },
+  exploreButtonText: { marginLeft: 8, color: COLORS.white, fontSize: 14, fontWeight: "700" },
+});
