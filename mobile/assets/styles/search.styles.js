@@ -1,0 +1,52 @@
+import { StyleSheet } from "react-native";
+import { COLORS } from "../../constants/colors";
+
+export const searchStyles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: COLORS.background },
+  searchSection: { paddingHorizontal: 16, paddingTop: 18 },
+  searchContainer: {
+    minHeight: 54,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 15,
+    borderRadius: 17,
+    backgroundColor: COLORS.card,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+  },
+  searchInput: { flex: 1, minHeight: 52, marginLeft: 10, color: COLORS.text, fontSize: 15 },
+  clearButton: { padding: 5, marginRight: -5 },
+  quickSearchBlock: { marginTop: 15 },
+  quickSearchLabel: { marginBottom: 9, color: COLORS.textLight, fontSize: 12, fontWeight: "700" },
+  quickSearchRow: { flexDirection: "row", flexWrap: "wrap", marginHorizontal: -4 },
+  quickSearchChip: {
+    margin: 4,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 14,
+    backgroundColor: COLORS.primarySoft,
+  },
+  quickSearchText: { color: COLORS.primary, fontSize: 11, fontWeight: "700" },
+  resultsSection: { flex: 1, paddingHorizontal: 16, marginTop: 22 },
+  resultsHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 14,
+  },
+  resultsTitle: { flex: 1, paddingRight: 10, color: COLORS.text, fontSize: 18, fontWeight: "800" },
+  resultsCount: { color: COLORS.textLight, fontSize: 12, fontWeight: "600" },
+  recipesGrid: { flexGrow: 1, paddingBottom: 30 },
+  row: { justifyContent: "space-between" },
+  emptyState: { flex: 1, alignItems: "center", justifyContent: "center", paddingVertical: 60 },
+  emptyIcon: {
+    width: 66,
+    height: 66,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 22,
+    backgroundColor: COLORS.primarySoft,
+  },
+  emptyTitle: { marginTop: 15, marginBottom: 7, color: COLORS.text, fontSize: 20, fontWeight: "800" },
+  emptyDescription: { color: COLORS.textLight, fontSize: 14, lineHeight: 20, textAlign: "center" },
+});
