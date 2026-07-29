@@ -2,7 +2,6 @@
 
 RecipeNest is a full-stack recipe and meal-planning app built with **Expo / React Native** and an **Express + PostgreSQL** backend. It goes beyond a simple recipe browser — users can track pantry ingredients, get ingredient-matched recipe suggestions, plan a full week of meals, auto-generate a shopping list, and cook with a guided step-by-step mode.
 
-<!-- Add a few screenshots or a short screen recording here before sharing -->
 
 ## Features
 
@@ -35,6 +34,7 @@ RecipeNest is a full-stack recipe and meal-planning app built with **Expo / Reac
 - Clerk-authenticated profile with diet and skill-level preferences
 - Cooking streak tracking, with progress bars toward recipes-cooked, streak, and saved-collection goals
 
+
 ## Tech Stack
 
 | Layer          | Technology |
@@ -54,47 +54,61 @@ RecipeNest/
 └── mobile/     Expo Router React Native application
 ```
 
-## Getting Started
+
+## Getting Started 
 
 ### 1. Backend
+
+Create a file named `.env` inside the `backend` folder:
+
+```env
+DATABASE_URL=your_postgresql_connection_string
+PORT=5001
+NODE_ENV=development
+CORS_ORIGINS=*
+```
+Add your PostgreSQL connection string to `backend/.env`, then run:
 
 ```bash
 cd backend
 npm install
-cp .env.example .env   # Windows: Copy-Item .env.example .env
-```
-
-Add your PostgreSQL connection string to `backend/.env`, then run:
-
-```bash
 npm run db:migrate
 npm run dev
 ```
-
 The API runs at `http://localhost:5001/api` by default.
 
-### 2. Mobile app
+
+
+### 2. Mobile app 
+
+Create a file named `.env` inside the `mobile` folder:
+Set the following in `mobile/.env`:
+
+```env
+
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_clerk_publishable_key
+
+# Choose ONE API URL that matches how you run the app:
+# Android emulator: http://10.0.2.2:5001/api
+# Physical phone:   http://YOUR_COMPUTER_LAN_IP:5001/api
+# Deployed backend: https://YOUR_BACKEND_DOMAIN/api
+# Do not use 127.0.0.1 or localhost on a physical phone.
+
+EXPO_PUBLIC_API_URL=http://10.0.2.2:5001/api 
+
+```
+
+Then run:
 
 ```bash
 cd mobile
 npm install
-cp .env.example .env   # Windows: Copy-Item .env.example .env
-```
-
-Set the following in `mobile/.env`:
-
-```env
-EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_your_key_here
-EXPO_PUBLIC_API_URL=http://10.0.2.2:5001/api   # Android emulator
-```
-
-> On a physical device, replace the API URL with your computer's LAN IP (e.g. `http://192.168.1.10:5001/api`) — `localhost` refers to the phone itself, not your dev machine.
-
-```bash
 npx expo start -c
 ```
 
-## Testing
+
+
+## Testing 
 
 Unit tests cover the pure, logic-heavy modules (`utils/ingredients.js` and
 `services/recipeStore.js`) using Node's built-in test runner:
@@ -104,21 +118,14 @@ cd mobile
 npm test
 ```
 
-**Known limitation surfaced by these tests:** `ingredientMatches` treats a
-plain pantry item (e.g. "milk") as satisfying a recipe's need for a
-distinctly different processed form of it (e.g. "coconut milk"), because the
-product-form guard only blocks a match when the product-form word is
-*missing* from the pantry - it doesn't fire when the pantry item and the
-product-form word happen to be the same term. The same pattern likely
-affects other `PRODUCT_FORM_WORDS` entries that are also plausible standalone
-pantry items (e.g. "cheese", "cream").
 
-## Design Notes
 
-- Favorites, pantry, meal plan, and cooking stats are stored locally per signed-in user first, and sync to the backend when it's reachable — the app stays usable offline.
-- Requests are debounced and guarded against stale responses while typing in search.
-- Weekly plans are split into smaller per-day records to keep local storage reliable.
+## Design and Implementation Notes
 
-## License
-
-ISC
+- User-specific favorites, pantry ingredients, meal plans, preferences, and cooking statistics are stored locally.
+- Supported information synchronizes with the backend when the API is available.
+- Local-first storage allows important parts of the application to remain usable when the network is unavailable.
+- Search requests are debounced to reduce unnecessary API calls.
+- Stale search responses are prevented from replacing newer results.
+- Weekly meal plans are stored as smaller daily records to improve local-storage reliability.
+- User data is separated using the authenticated Clerk user ID.
